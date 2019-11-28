@@ -1,0 +1,59 @@
+/***
+div
+****/
+.tab_header{
+    padding:20px;
+    border-radius: 7px;
+    width: 100%;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   margin-top: 40px;
+  }
+
+  .tab_body{
+    padding:5px;
+    border-radius: 7px;  
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   text-align: left;
+   text-indent:10px;
+   margin-top:28px;
+  }
+
+ /***********
+Select option
+ ************/
+#options_menu{
+ padding:11px;
+ width:300px;
+}
+.options{
+    margin-top: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+ /****
+ Table
+ *****/
+ thead tr{
+  background-color:#2573a8;
+  color:#fff
+ }
+ table tbody .one{
+	display: table-cell;
+}
+table tbody tr td {
+    display: block;
+    padding:11px;
+    text-align: left;
+}
+
+
+
+
+
+
+
+

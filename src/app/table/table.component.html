@@ -1,0 +1,281 @@
+<div class="tab_body">
+    <h3>Header</h3><br>
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="options">
+              <select id="options_menu" (change)="FYchange($event)">
+                <option [value]="country.FY" *ngFor="let country of countries" >{{country.FY}}</option>
+                </select>
+          </div>
+          <div class="options">
+                <ng-multiselect-dropdown
+                  id="new" 
+                  [placeholder]="'Months'"
+                  [data]="dropdownList"
+                  [settings]="dropdownSettings"
+                  [disabled] = "isDisabled"
+                  (onSelect)="onItemSelect($event)"
+                  (onDeSelect)="onItemDeSelect($event)"
+                >
+                </ng-multiselect-dropdown>
+          </div>
+            </div>
+        <div id="table" class="table-editable"> 
+          <table class="table table-bordered table-responsive-md table-striped text-center" id="fiscal_table">
+            <thead>
+                <tr> 
+                  <th id="ff"></th>
+                  <th class="month" id="Apr"><i style="float:left" class="fa fa-pencil"></i>Apr</th>
+                  <th class="month" id="May"><i style="float:left" class="fa fa-pencil"></i>May</th> 
+                  <th class="month" id="Jun"><i style="float:left" class="fa fa-pencil"></i>Jun</th>
+                  <th id="Q1">Q1<i class="fa fa-arrow-down"></i></th>
+                  <th class="month" id="Jul"><i style="float:left" class="fa fa-pencil"></i>Jul</th>
+                  <th class="month" id="Aug"><i style="float:left" class="fa fa-pencil"></i>Aug</th>
+                  <th class="month" id="Sept"><i style="float:left" class="fa fa-pencil"></i>Sep</th>
+                  <th id="Q2">Q2<i class="fa fa-arrow-down"></i></th>       
+                  <th class="month" id="Oct"><i style="float:left" class="fa fa-pencil"></i>Oct</th>
+                  <th class="month" id="Nov"><i style="float:left" class="fa fa-pencil"></i>Nov</th>
+                  <th class="month" id="Dec"><i style="float:left" class="fa fa-pencil"></i>Dec</th>
+                  <th id="Q3">Q3<i class="fa fa-arrow-down"></i></th>
+                  <th class="month" id="Jan"><i style="float:left" class="fa fa-pencil"></i>Jan</th>
+                  <th class="month" id="Feb"><i style="float:left" class="fa fa-pencil"></i>Feb</th>
+                  <th class="month" id="Mar"><i style="float:left" class="fa fa-pencil"></i>Mar</th>
+                  <th id="Q4">Q4<i class="fa fa-arrow-down"></i></th> 
+                </tr>
+            </thead>
+            <tbody id="tbodyitem">
+              <tr class="one" style="width:240px;">
+                <td  style="font-weight: bold;">Allumina JSG</td>
+                <td style="font-weight: bold;">Alumina Balco</td>
+                <td style="font-weight: bold;">Alumina JSG</td>
+                <td style="font-weight: bold;">Total Alumina</td>
+                <td style="font-weight: bold;">Planned Inventory</td>
+                <td style="font-weight: bold;">Total Bauxite</td>
+                <td style="font-weight: bold;">OMC</td>
+                <td style="font-weight: bold;">BALCO(CG)</td>
+                <td style="font-weight: bold;">Imports</td>
+              </tr>
+              <tr class="one" id="id">
+                  <ng-container *ngFor="let person of personList;let id = index;">
+                      <ng-container *ngIf="person.month == 4 && person.fiscalyear == this.menu_selected ;">
+                        <td id="Apr">{{person.Import_qty_for_P1 == '' ? '0.00' : person.Import_qty_for_P1}}</td>
+                        <td id="Apr">{{person.Import_qty_for_P2 == '' ? '0.00' : person.Import_qty_for_P2}}</td>
+                        <td id="Apr">{{person.alumina_lanjigarh_supply_p1 == '' ? '0.00' : person.alumina_lanjigarh_supply_p1}}</td>
+                        <td id="Apr">{{person.alumina_lanjigarh_supply_p2 == '' ? '0.00' : person.alumina_lanjigarh_supply_p2}}</td>
+                        <td id="Apr">{{person.alumina_req_P1 == '' ? '0.00' : person.alumina_req_P1}}</td>
+                        <td id="Apr">{{person.alumina_req_P2 == '' ? '0.00' : person.alumina_req_P2}}</td>
+                        <td id="Apr">{{person.total_alumina_req == '' ? '0.00': person.total_alumina_req}}</td>
+                        <td id="Apr">{{person.total_lanjigarh_supply == '' ? '0.00': person.total_lanjigarh_supply}}</td>
+                        <td id="Apr">{{person.import_qty == '' ? '0.00' : person.import_qty}}</td>
+                    </ng-container>
+                  </ng-container>
+                </tr>                        
+                <tr class="one" id="id" >
+                  <ng-container *ngFor="let person of personList;let id = index;">
+                    <ng-container *ngIf="person.month == 5 && person.fiscalyear == this.menu_selected ;">
+                        <td id="May">{{person.Import_qty_for_P1}}</td>
+                        <td id="May">{{person.Import_qty_for_P2}}</td>
+                        <td id="May">{{person.alumina_lanjigarh_supply_p1}}</td>
+                        <td id="May">{{person.alumina_lanjigarh_supply_p2}}</td>
+                        <td id="May">{{person.alumina_req_P1   }}</td>
+                        <td id="May">{{person.alumina_req_P2  }}</td>
+                        <td id="May">{{person.total_alumina_req }}</td>
+                        <td id="May">{{person.total_lanjigarh_supply }}</td>
+                        <td id="May">{{person.import_qty}}</td>
+                  </ng-container>
+                  </ng-container>
+                </tr>
+                <tr class="one" id="id">
+                    <ng-container *ngFor="let person of personList;let id = index;">
+                      <ng-container *ngIf="person.month == 6 && person.fiscalyear == this.menu_selected" >
+                          <td id="Jun" >{{person.Import_qty_for_P1}}</td>
+                          <td id="Jun" >{{person.Import_qty_for_P2}}</td>
+                          <td id="Jun" >{{person.alumina_lanjigarh_supply_p1}}</td>
+                          <td id="Jun" >{{person.alumina_lanjigarh_supply_p2}}</td>
+                          <td id="Jun">{{person.alumina_req_P1}}</td>
+                          <td id="Jun" >{{person.alumina_req_P2}}</td>
+                          <td id="Jun" >{{person.total_alumina_req}}</td>
+                          <td id="Jun" >{{person.total_lanjigarh_supply}}</td>
+                          <td id="Jun" >{{person.import_qty}}</td>
+                        </ng-container>
+                    </ng-container>
+                  </tr>
+                  <tr class="one" id="Q1">
+                    <!-- Quarter first Total -->
+                    <ng-container *ngFor="let subitem of arr ;let id = index;">
+                       <ng-container *ngFor="let item of subitem | keyvalue">
+                              <td>{{item.value.Q1total}}</td>
+                       </ng-container>
+                    </ng-container>
+                  </tr>
+                  <tr class="one" id="id">
+                      <ng-container *ngFor="let person of personList;let id = index;">
+                        <ng-container *ngIf="person.month == 7 && person.fiscalyear == this.menu_selected" >
+                            <td id="Jul" >{{person.Import_qty_for_P1}}</td>
+                            <td id="Jul">{{person.Import_qty_for_P2}}</td>
+                            <td id="Jul">{{person.alumina_lanjigarh_supply_p1}}</td>
+                            <td id="Jul">{{person.alumina_lanjigarh_supply_p2}}</td>
+                            <td id="Jul">{{person.alumina_req_P1}}</td>
+                            <td id="Jul">{{person.alumina_req_P2}}</td>
+                            <td id="Jul">{{person.total_alumina_req}}</td>
+                            <td id="Jul">{{person.total_lanjigarh_supply}}</td>
+                            <td id="Jul">{{person.import_qty}}</td>
+                          </ng-container>
+                      </ng-container>
+                    </tr>
+                    <tr class="one" id="id">
+                        <ng-container *ngFor="let person of personList;let id = index;">
+                          <ng-container *ngIf="person.month == 8 && person.fiscalyear == this.menu_selected" >
+                              <td id="Aug">{{person.Import_qty_for_P1}}</td>
+                              <td id="Aug" >{{person.Import_qty_for_P2}}</td>
+                              <td id="Aug">{{person.alumina_lanjigarh_supply_p1}}</td>
+                              <td id="Aug">{{person.alumina_lanjigarh_supply_p2}}</td>
+                              <td id="Aug">{{person.alumina_req_P1}}</td>
+                              <td id="Aug">{{person.alumina_req_P2}}</td>
+                              <td id="Aug">{{person.total_alumina_req}}</td>
+                              <td id="Aug">{{person.total_lanjigarh_supply}}</td>
+                              <td id="Aug">{{person.import_qty}}</td>
+                            </ng-container>
+                        </ng-container>
+                      </tr>
+                    <tr class="one" id="id">
+                        <ng-container *ngFor="let person of personList;let id = index;">
+                          <ng-container *ngIf="person.month == 9 && person.fiscalyear == this.menu_selected" >
+                              <td id="Sept">{{person.Import_qty_for_P1}}</td>
+                              <td id="Sept">{{person.Import_qty_for_P2}}</td>
+                              <td id="Sept">{{person.alumina_lanjigarh_supply_p1}}</td>
+                              <td id="Sept" >{{person.alumina_lanjigarh_supply_p2}}</td>
+                              <td id="Sept">{{person.alumina_req_P1}}</td>
+                              <td id="Sept">{{person.alumina_req_P2}}</td>
+                              <td id="Sept">{{person.total_alumina_req}}</td>
+                              <td id="Sept">{{person.total_lanjigarh_supply}}</td>
+                              <td id="Sept">{{person.import_qty}}</td>
+                            </ng-container>
+                        </ng-container>
+                      </tr>
+                  <tr class="one" id="Q2">
+                    <!-- Second Quarter Total -->
+                    <ng-container *ngFor="let subitem of arr ;let id = index;">
+                        <ng-container *ngFor="let item of subitem | keyvalue">
+                          <td>{{item.value.Q2total}}</td>
+                        </ng-container>
+                     </ng-container>
+                    </tr>
+                    <tr class="one" id="id">
+                        <ng-container *ngFor="let person of personList;let id = index;">
+                          <ng-container *ngIf="person.month == 10 && person.fiscalyear == this.menu_selected" >
+                              <td id="Oct" >{{person.Import_qty_for_P1}}</td>
+                              <td id="Oct">{{person.Import_qty_for_P2}}</td>
+                              <td id="Oct" >{{person.alumina_lanjigarh_supply_p1}}</td>
+                              <td id="Oct">{{person.alumina_lanjigarh_supply_p2}}</td>
+                              <td id="Oct">{{person.alumina_req_P1}}</td>
+                              <td id="Oct">{{person.alumina_req_P2}}</td>
+                              <td id="Oct">{{person.total_alumina_req}}</td>
+                              <td id="Oct">{{person.total_lanjigarh_supply}}</td>
+                              <td id="Oct">{{person.import_qty}}</td>
+                            </ng-container>
+                        </ng-container>
+                      </tr>
+                      <tr class="one" id="id">
+                          <ng-container *ngFor="let person of personList;let id = index;">
+                            <ng-container *ngIf="person.month == 11 && person.fiscalyear == this.menu_selected" >
+                                <td id="Nov">{{person.Import_qty_for_P1}}</td>
+                                <td id="Nov">{{person.Import_qty_for_P2}}</td>
+                                <td id="Nov" >{{person.alumina_lanjigarh_supply_p1}}</td>
+                                <td id="Nov">{{person.alumina_lanjigarh_supply_p2}}</td>
+                                <td id="Nov">{{person.alumina_req_P1}}</td>
+                                <td id="Nov">{{person.alumina_req_P2}}</td>
+                                <td id="Nov">{{person.total_alumina_req}}</td>
+                                <td id="Nov">{{person.total_lanjigarh_supply}}</td>
+                                <td id="Nov">{{person.import_qty}}</td>
+                              </ng-container>
+                          </ng-container>
+                        </tr>
+                        <tr class="one" id="id">
+                            <ng-container *ngFor="let person of personList;let id = index;">
+                              <ng-container *ngIf="person.month == 12 && person.fiscalyear == this.menu_selected" >
+                                  <td id="Dec">{{person.Import_qty_for_P1}}</td>
+                                  <td id="Dec">{{person.Import_qty_for_P2}}</td>
+                                  <td id="Dec">{{person.alumina_lanjigarh_supply_p1}}</td>
+                                  <td id="Dec">{{person.alumina_lanjigarh_supply_p2}}</td>
+                                  <td id="Dec">{{person.alumina_req_P1}}</td>
+                                  <td id="Dec">{{person.alumina_req_P2}}</td>
+                                  <td id="Dec">{{person.total_alumina_req}}</td>
+                                  <td id="Dec">{{person.total_lanjigarh_supply}}</td>
+                                  <td id="Dec">{{person.import_qty}}</td>
+                                </ng-container>
+                            </ng-container>
+                          </tr>
+                          <tr class="one" id="Q3">
+                              <!-- Second Quarter Total -->
+                              <ng-container *ngFor="let subitem of arr ;let id = index;">
+                                  <ng-container *ngFor="let item of subitem | keyvalue">
+                                    
+                                          <td>{{item.value.Q3total}}</td>
+                                     
+                                  </ng-container>
+                               </ng-container>
+                              </tr>
+                          <tr class="one" id="id">
+                              <ng-container *ngFor="let person of personList;let id = index;">
+                                <ng-container *ngIf="person.month == 1 && person.fiscalyear == this.menu_selected" >
+                                    <td id="Jan">{{person.Import_qty_for_P1}}</td>
+                                    <td id="Jan">{{person.Import_qty_for_P2}}</td>
+                                    <td id="Jan">{{person.alumina_lanjigarh_supply_p1}}</td>
+                                    <td id="Jan">{{person.alumina_lanjigarh_supply_p2}}</td>
+                                    <td id="Jan">{{person.alumina_req_P1}}</td>
+                                    <td id="Jan">{{person.alumina_req_P2}}</td>
+                                    <td id="Jan">{{person.total_alumina_req}}</td>
+                                    <td id="Jan">{{person.total_lanjigarh_supply}}</td>
+                                    <td id="Jan">{{person.import_qty}}</td>
+                                  </ng-container>
+                              </ng-container>
+                            </tr>
+                            <tr class="one" id="id">
+                                <ng-container *ngFor="let person of personList;let id = index;">
+                                  <ng-container *ngIf="person.month == 2 && person.fiscalyear == this.menu_selected" >
+                                      <td id="Feb">{{person.Import_qty_for_P1}}</td>
+                                      <td id="Feb">{{person.Import_qty_for_P2}}</td>
+                                      <td id="Feb">{{person.alumina_lanjigarh_supply_p1}}</td>
+                                      <td id="Feb">{{person.alumina_lanjigarh_supply_p2}}</td>
+                                      <td id="Feb">{{person.alumina_req_P1}}</td>
+                                      <td id="Feb">{{person.alumina_req_P2}}</td>
+                                      <td id="Feb">{{person.total_alumina_req}}</td>
+                                      <td id="Feb">{{person.total_lanjigarh_supply}}</td>
+                                      <td id="Feb">{{person.import_qty}}</td>
+                                    </ng-container>
+                                </ng-container>
+                              </tr>
+                              <tr class="one" id="id">
+                                  <ng-container *ngFor="let person of personList;let id = index;">
+                                    <ng-container *ngIf="person.month == 3 && person.fiscalyear == this.menu_selected" >
+                                        <td id="Mar">{{person.Import_qty_for_P1}}</td>
+                                        <td id="Mar">{{person.Import_qty_for_P2}}</td>
+                                        <td id="Mar">{{person.alumina_lanjigarh_supply_p1}}</td>
+                                        <td id="Mar">{{person.alumina_lanjigarh_supply_p2}}</td>
+                                        <td id="Mar">{{person.alumina_req_P1}}</td>
+                                        <td id="Mar">{{person.alumina_req_P2}}</td>
+                                        <td id="Mar">{{person.total_alumina_req}}</td>
+                                        <td id="Mar">{{persootal_lanjigarh_supply}}</td>
+                                        <td id="Mar">{{person.import_qty}}</td>
+                                      </ng-container>
+                                  </ng-container>
+                                </tr>
+                                <tr class="one" id="Q4">
+                                    <!-- Fourth Quarter Total -->
+                                  <ng-container *ngFor="let subitem of arr ;let id = index;">
+                                      <ng-container *ngFor="let item of subitem | keyvalue">
+                                        <td>{{item.value.Q4total}}</td>
+                                      </ng-container>
+                                    </ng-container>                      
+                                </tr>
+                
+            </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  <button class="btn btn-primary" style="margin-top: 20px; margin-left:40px;margin-bottom:20px;"(click)="get_updated_values()">Submit</button>
+  </div>
+  
